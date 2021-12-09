@@ -28,17 +28,7 @@ class Chipselect extends StatefulWidget {
 }
 
 class _ChipselectState extends State<Chipselect> {
-  String selectedChoice = "";
-  final List<String> strings = [
-    'memory1',
-    'memory2',
-    'memory3',
-    'memory4',
-    'memory5',
-    'memory6',
-  ];
-
-  final _choices = ["選択", "できる", "チップ"];
+  final _choices = ["M1", "M2", "M3"];
   final _icon = [
     const Icon(Icons.ac_unit),
     const Icon(Icons.access_alarm_sharp),
@@ -67,7 +57,7 @@ class _ChipselectState extends State<Chipselect> {
                     selectedColor: Colors.red,
                     onSelected: (bool selected) {
                       setState(() {
-                        _choiceIndex = selected ? index : 0;
+                        _choiceIndex = index;
                       });
                     },
                     backgroundColor: Colors.green,
@@ -88,9 +78,19 @@ class _ChipselectState extends State<Chipselect> {
     );
   }
 
+  String selectedChoice = "";
+  final Listxxx = [
+    'memory1',
+    'memory2',
+    'memory3',
+    'memory4',
+    'memory5',
+    'memory6',
+  ];
+
   List<Widget> get _choiceList {
     List<Widget> choices = [];
-    for (var item in strings) {
+    for (var item in Listxxx) {
       choices.add(Container(
         padding: const EdgeInsets.all(30.0),
         child: ChoiceChip(
