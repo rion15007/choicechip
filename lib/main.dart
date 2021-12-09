@@ -38,13 +38,52 @@ class _ChipselectState extends State<Chipselect> {
     'memory6',
   ];
 
+  final _choices = ["選択", "できる", "チップ"];
+  final _icon = [
+    const Icon(Icons.ac_unit),
+    const Icon(Icons.access_alarm_sharp),
+    const Icon(Icons.zoom_in),
+  ];
+
+  var _choiceIndex;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Wrap(
-          children: _choiceList, // 代入
-        ),
+      body: Column(
+        children: [
+          const SizedBox(height: 100),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 4,
+            child: ListView.builder(
+              itemCount: _choices.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ChoiceChip(
+                    label: Text(_choices[index]),
+                    avatar: _icon[index],
+                    selected: _choiceIndex == index,
+                    selectedColor: Colors.red,
+                    onSelected: (bool selected) {
+                      setState(() {
+                        _choiceIndex = selected ? index : 0;
+                      });
+                    },
+                    backgroundColor: Colors.green,
+                    labelStyle: const TextStyle(color: Colors.white),
+                  ),
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 100),
+          Center(
+            child: Wrap(
+              children: _choiceList, // 代入
+            ),
+          ),
+        ],
       ),
     );
   }
