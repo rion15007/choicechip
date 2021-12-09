@@ -33,12 +33,12 @@ class _ChipselectState extends State<Chipselect> {
     const Icon(Icons.ac_unit),
     const Icon(Icons.access_alarm_sharp),
     const Icon(Icons.zoom_in),
-    const Icon(Icons.ac_unit),
-    const Icon(Icons.access_alarm_sharp),
-    const Icon(Icons.zoom_in),
+    const Icon(Icons.school_outlined),
+    const Icon(Icons.radio),
+    const Icon(Icons.air_rounded),
   ];
 
-  var _choiceIndex;
+  var _choiceIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _ChipselectState extends State<Chipselect> {
   }
 
   String selectedChoice = "";
-  final Listxxx = [
+  var listxxx = [
     'memory1',
     'memory2',
     'memory3',
@@ -98,7 +98,7 @@ class _ChipselectState extends State<Chipselect> {
 
   List<Widget> get _choiceList {
     List<Widget> choices = [];
-    for (var item in Listxxx) {
+    for (var item in listxxx) {
       choices.add(Container(
         padding: const EdgeInsets.all(30.0),
         child: ChoiceChip(
