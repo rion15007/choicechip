@@ -28,8 +28,11 @@ class Chipselect extends StatefulWidget {
 }
 
 class _ChipselectState extends State<Chipselect> {
-  final _choices = ["M1", "M2", "M3"];
+  final _choices = ["M1", "M2", "M3", "M4", "M5", "M6"];
   final _icon = [
+    const Icon(Icons.ac_unit),
+    const Icon(Icons.access_alarm_sharp),
+    const Icon(Icons.zoom_in),
     const Icon(Icons.ac_unit),
     const Icon(Icons.access_alarm_sharp),
     const Icon(Icons.zoom_in),
@@ -46,23 +49,28 @@ class _ChipselectState extends State<Chipselect> {
           SizedBox(
             height: MediaQuery.of(context).size.height / 4,
             child: ListView.builder(
+              scrollDirection: Axis.horizontal,
               itemCount: _choices.length,
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChoiceChip(
-                    label: Text(_choices[index]),
-                    avatar: _icon[index],
-                    selected: _choiceIndex == index,
-                    selectedColor: Colors.red,
-                    onSelected: (bool selected) {
-                      setState(() {
-                        _choiceIndex = index;
-                      });
-                    },
-                    backgroundColor: Colors.green,
-                    labelStyle: const TextStyle(color: Colors.white),
-                  ),
+                return Wrap(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ChoiceChip(
+                        label: Text(_choices[index]),
+                        avatar: _icon[index],
+                        selected: _choiceIndex == index,
+                        selectedColor: Colors.red,
+                        onSelected: (bool selected) {
+                          setState(() {
+                            _choiceIndex = index;
+                          });
+                        },
+                        backgroundColor: Colors.green,
+                        labelStyle: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 );
               },
             ),
